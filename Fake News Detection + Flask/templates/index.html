@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News Detection</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+body {background-color:#46344E;}
+.btn-outline-warning {
+  border-color: #FAED26;
+  color: #FAED26;
+}
+
+.btn-outline-warning:hover {
+  background: #FAED26;
+  color: white;
+}
+
+.photo-background {
+    background-image: url('{{url_for("static", filename="fakenews.10.jpg")}}');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+  
+</head>
+<br><br><br>
+<body class="container-fluid photo-background" style="height: 100%;">
+<div class="container text-center">
+ <div class="login"> 
+	<h1 style="color: #FAED26;" class="display-4">Fake News Detector</h1>
+  <p class="lead font-italic" style="color:#FAED26; font-weight: 400;" >In the world of fake forwards, we hunt for the truth!!</p>
+  <hr class="my-4" style="background-color: #9D8D8F">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <div class="row">
+        <div class="col col-2"></div>
+        <div class="col col-8"><input type="text" name="experience" class="form-control" placeholder="News" required="required" /></div>
+        <div class="col col-2"></div>      
+        </div>
+        <br><button type="submit" class="btn btn-outline-warning btn-lg">Check</button><br>
+    </form>
+   <br>
+   
+   <div class="display-4" style="color: #FAED26; font-size: 20px; font-weight: 400;">
+    {% if prediction_text %}
+        {{ prediction_text[0] }}
+        <br><br>
+        <div style="font-size: 30px; font-weight: 400;">
+        {{ prediction_text[1] }}</div>
+
+    {% endif %}
+  </div><br><br><br><br><br><br><br><br><br>
+
+ </div>
+</div>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</htmlE>
