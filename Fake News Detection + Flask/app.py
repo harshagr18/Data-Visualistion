@@ -44,7 +44,5 @@ def predict():
     else:
         return render_template('index.html', prediction_text=[str(news[0]), "\n\n This news is absolutely true 😃"]) 
      
-
-
 if __name__ == "__main__":
     app.run(debug=True)
